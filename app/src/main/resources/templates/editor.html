@@ -1,0 +1,9 @@
+<!DOCTYPE html><html lang="ko" xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>REA 메모</title><link rel="stylesheet" th:href="@{/style.css}"><script defer th:src="@{/app.js}"></script></head><body><header><a href="/" class="brand"><span class="logo">▤</span> REA 메모</a><span>나의 생각을 모으는 공간</span></header><main><section class="editor" aria-labelledby="editor-title"><p class="eyebrow">NOTE EDITOR</p><h1 id="editor-title" th:text="${noteId == null ? '새 메모' : '메모 수정'}"></h1>
+<form method="post" th:action="${noteId == null ? '/notes' : '/notes/' + noteId}" th:object="${noteForm}">
+<div class="error" role="alert" th:if="${#fields.hasAnyErrors()}"><p th:each="err : ${#fields.allErrors()}" th:text="${err}"></p></div>
+<p class="error" role="alert" th:if="${saveError}" th:text="${saveError}"></p>
+<label for="title">제목</label><input id="title" th:field="*{title}" maxlength="200" placeholder="제목을 입력하세요" autofocus>
+<label for="body">본문</label><textarea id="body" th:field="*{body}" maxlength="10000" rows="12" placeholder="메모를 작성하세요"></textarea>
+<p class="hint">제목 200자 · 본문 10,000자 이내. 저장 버튼을 눌러야 반영됩니다.</p>
+<div class="actions"><a href="/">취소하고 목록으로</a><button type="submit">저장</button></div><p class="hint" id="save-state" aria-live="polite"></p>
+</form></section></main></body></html>

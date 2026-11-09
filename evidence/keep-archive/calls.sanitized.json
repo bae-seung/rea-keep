@@ -1,0 +1,867 @@
+{
+  "privacy": "Filtered invocation log, not a full Evidence export. Account metadata, personal notes, DOM, storage, network and test-note identifier omitted.",
+  "calls": [
+    {
+      "label": "reconnect",
+      "source": "mcp",
+      "tool": "list_browser_targets",
+      "arguments": {
+        "cdp_endpoint": "http://127.0.0.1:9226",
+        "allowed_origins": [
+          "https://keep.google.com"
+        ]
+      },
+      "evidence_id": "ev_0a20eea4a80bce23118a81eed007204a14c89a8584cdf06722aac602711dfb67",
+      "status": "success",
+      "error": null,
+      "steps": null
+    },
+    {
+      "label": "initial-interface-inspection",
+      "source": "mcp",
+      "tool": "inspect_web_page",
+      "arguments": {
+        "cdp_endpoint": "http://127.0.0.1:9226",
+        "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD",
+        "allowed_origins": [
+          "https://keep.google.com"
+        ],
+        "include_accessibility_text": true,
+        "observation_ms": 0
+      },
+      "evidence_id": "ev_21626d8e7b2bfdb6567c8bd4c0eaa4c0394a98b1f9ca8b33ba70f347c044687f",
+      "status": "success",
+      "error": null,
+      "steps": null
+    },
+    {
+      "label": "scenario-interface-discovery",
+      "source": "mcp",
+      "tool": "capture_browser_scenario",
+      "arguments": {
+        "browser": {
+          "mode": "connect",
+          "cdp_endpoint": "http://127.0.0.1:9226",
+          "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD"
+        },
+        "start_url": {
+          "url": "https://keep.google.com/"
+        },
+        "actions": [
+          {
+            "step_id": "settle",
+            "action": "wait_for_timeout",
+            "duration_ms": 1000
+          }
+        ],
+        "capture": {
+          "at_end": [
+            "accessibility"
+          ],
+          "events": []
+        }
+      },
+      "evidence_id": "ev_e449ffdd263a20f085c962db2edaccadcf8f546138e9f2fa6933b2a418f80e48",
+      "status": "success",
+      "error": null,
+      "steps": [
+        {
+          "step_id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "settle",
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ]
+    },
+    {
+      "label": "initial-search-inconclusive",
+      "source": "mcp",
+      "tool": "capture_browser_scenario",
+      "arguments": {
+        "browser": {
+          "mode": "connect",
+          "cdp_endpoint": "http://127.0.0.1:9226",
+          "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD"
+        },
+        "start_url": {
+          "url": "https://keep.google.com/"
+        },
+        "actions": [
+          {
+            "step_id": "search-test-title",
+            "action": "fill",
+            "locator": {
+              "kind": "role",
+              "role": "combobox",
+              "name": "검색"
+            },
+            "value": {
+              "source": "literal",
+              "value": "REA 과제 테스트"
+            },
+            "timeout_ms": 10000
+          },
+          {
+            "step_id": "search-enter",
+            "action": "press",
+            "locator": {
+              "kind": "role",
+              "role": "combobox",
+              "name": "검색"
+            },
+            "key": "Enter",
+            "timeout_ms": 10000
+          },
+          {
+            "step_id": "search-settle",
+            "action": "wait_for_timeout",
+            "duration_ms": 1200
+          }
+        ],
+        "capture": {
+          "at_end": [
+            "accessibility",
+            "url"
+          ],
+          "events": []
+        }
+      },
+      "evidence_id": "ev_fc4a98d36e24577554267aa9037fc42105b6dcbb44364676691e2c8fbfa8de9b",
+      "status": "success",
+      "error": null,
+      "steps": [
+        {
+          "step_id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "search-test-title",
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "search-enter",
+          "action": "press",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "search-settle",
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ]
+    },
+    {
+      "label": "placeholder-click-failed",
+      "source": "mcp",
+      "tool": "capture_browser_scenario",
+      "arguments": {
+        "browser": {
+          "mode": "connect",
+          "cdp_endpoint": "http://127.0.0.1:9226",
+          "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD"
+        },
+        "start_url": {
+          "url": "https://keep.google.com/"
+        },
+        "actions": [
+          {
+            "step_id": "open-new-note",
+            "action": "click",
+            "locator": {
+              "kind": "css",
+              "selector": ":text-is(\"메모 작성…\")"
+            },
+            "timeout_ms": 10000
+          }
+        ],
+        "capture": {
+          "at_end": [
+            "accessibility",
+            "dom"
+          ],
+          "events": []
+        }
+      },
+      "evidence_id": "ev_539022b6bce7067b4fa48a704eaab4f03fe7a2b04226b2357a2868f687bdaeee",
+      "status": "partial",
+      "error": null,
+      "steps": [
+        {
+          "step_id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "open-new-note",
+          "action": "click",
+          "status": "failed",
+          "error": "locator.click: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator(':text-is(\"메모 작성…\")')\u001b[22m\n\u001b[2m    - locator resolved to <div class=\"fmcmS-LwH6nd\">메모 작성…</div>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p class=\"\" dir=\"auto\" role=\"presentation\">…</p> from <div tabindex=\"0\" role=\"combobox\" contenteditable=\"true\" aria-autocomplete=\"list\" class=\"IZ65Hb-vIzZGf-L9AdLc-haAclf\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <p class=\"\" dir=\"auto\" role=\"presentation\">…</p> from <div tabindex=\"0\" role=\"combobox\" contenteditable=\"true\" aria-autocomplete=\"list\" class=\"IZ65Hb-vIzZGf-L9AdLc-haAclf\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  2 × retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input value=\"\" name=\"q\" type=\"text\" aria-label=\"검색\" role=\"combobox\" placeholder=\"검색\" autocomplete=\"off\" class=\"gb_Le aSVJYc-G0jgYd-YPqjbf\"/> from <div id=\"ognwrapper\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  4 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p class=\"\" dir=\"auto\" role=\"presentation\">…</p> from <div tabindex=\"0\" role=\"combobox\" contenteditable=\"true\" aria-autocomplete=\"list\" class=\"IZ65Hb-vIzZGf-L9AdLc-haAclf\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p class=\"\" dir=\"auto\" role=\"presentation\">…</p> from <div tabindex=\"0\" role=\"combobox\" contenteditable=\"true\" aria-autocomplete=\"list\" class=\"IZ65Hb-vIzZGf-L9AdLc-haAclf\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input value=\"\" name=\"q\" type=\"text\" aria-label=\"검색\" role=\"combobox\" placeholder=\"검색\" autocomplete=\"off\" class=\"gb_Le aSVJYc-G0jgYd-YPqjbf\"/> from <div id=\"ognwrapper\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <input value=\"\" name=\"q\" type=\"text\" aria-label=\"검색\" role=\"combobox\" placeholder=\"검색\" autocomplete=\"off\" class=\"gb_Le aSVJYc-G0jgYd-YPqjbf\"/> from <div id=\"ognwrapper\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  2 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <p class=\"\" dir=\"auto\" role=\"presentation\">…</p> from <div tabindex=\"0\" role=\"combobox\" contenteditable=\"true\" aria-autocomplete=\"list\" class=\"IZ65Hb-vIzZGf-L9AdLc-haAclf\">…</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n"
+        }
+      ]
+    },
+    {
+      "label": "keep_body_create",
+      "source": "mcp",
+      "tool": "capture_browser_scenario",
+      "arguments": {
+        "browser": {
+          "mode": "connect",
+          "cdp_endpoint": "http://127.0.0.1:9226",
+          "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD"
+        },
+        "start_url": {
+          "url": "https://keep.google.com/"
+        },
+        "actions": [
+          {
+            "step_id": "new-note-body",
+            "action": "fill",
+            "locator": {
+              "kind": "css",
+              "selector": "[role=\"combobox\"][contenteditable=\"true\"]"
+            },
+            "value": {
+              "source": "literal",
+              "value": "보관 및 보관 해제 동작 확인"
+            },
+            "timeout_ms": 10000
+          }
+        ],
+        "capture": {
+          "at_end": [
+            "accessibility",
+            "dom"
+          ],
+          "events": []
+        }
+      },
+      "evidence_id": "ev_d4fb4128fda0de2605d6a96c2033b54e9cc90aea067ea8b96f08e189589266b0",
+      "status": "success",
+      "error": null,
+      "steps": [
+        {
+          "step_id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "new-note-body",
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        }
+      ]
+    },
+    {
+      "label": "keep_title_attempt",
+      "source": "mcp",
+      "tool": "capture_browser_scenario",
+      "arguments": {
+        "browser": {
+          "mode": "connect",
+          "cdp_endpoint": "http://127.0.0.1:9226",
+          "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD"
+        },
+        "start_url": {
+          "url": "https://keep.google.com/"
+        },
+        "actions": [
+          {
+            "step_id": "set-test-title",
+            "action": "fill",
+            "locator": {
+              "kind": "role",
+              "role": "textbox",
+              "name": "제목"
+            },
+            "value": {
+              "source": "literal",
+              "value": "REA 과제 테스트"
+            },
+            "timeout_ms": 5000
+          },
+          {
+            "step_id": "close-created-note",
+            "action": "click",
+            "locator": {
+              "kind": "role",
+              "role": "button",
+              "name": "닫기"
+            },
+            "timeout_ms": 5000
+          }
+        ],
+        "capture": {
+          "at_end": [
+            "accessibility",
+            "dom"
+          ],
+          "events": []
+        }
+      },
+      "evidence_id": "ev_25bb54967c95e16025230bbc4b319d86c770116dbe95cfe911582723be561b14",
+      "status": "partial",
+      "error": null,
+      "steps": [
+        {
+          "step_id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "set-test-title",
+          "action": "fill",
+          "status": "failed",
+          "error": "Analysis operation timed out after 5000ms: capture_browser_scenario"
+        },
+        {
+          "step_id": "close-created-note",
+          "action": "click",
+          "status": "cancelled",
+          "error": "not executed after an earlier action failure"
+        }
+      ]
+    },
+    {
+      "label": "keep_find_body",
+      "source": "mcp",
+      "tool": "capture_browser_scenario",
+      "arguments": {
+        "browser": {
+          "mode": "connect",
+          "cdp_endpoint": "http://127.0.0.1:9226",
+          "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD"
+        },
+        "start_url": {
+          "url": "https://keep.google.com/"
+        },
+        "actions": [
+          {
+            "step_id": "find-created-body",
+            "action": "fill",
+            "locator": {
+              "kind": "role",
+              "role": "combobox",
+              "name": "검색"
+            },
+            "value": {
+              "source": "literal",
+              "value": "보관 및 보관 해제 동작 확인"
+            },
+            "timeout_ms": 10000
+          },
+          {
+            "step_id": "search-debounce",
+            "action": "wait_for_timeout",
+            "duration_ms": 2500
+          }
+        ],
+        "capture": {
+          "at_end": [
+            "accessibility",
+            "dom",
+            "url"
+          ],
+          "events": []
+        }
+      },
+      "evidence_id": "ev_e915356bcd4580ad9ecf878dbe191eb3919031b3d41def94b9b5cbb6b894fd44",
+      "status": "success",
+      "error": null,
+      "steps": [
+        {
+          "step_id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "find-created-body",
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "search-debounce",
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ]
+    },
+    {
+      "label": "keep_create_complete",
+      "source": "mcp",
+      "tool": "capture_browser_scenario",
+      "arguments": {
+        "browser": {
+          "mode": "connect",
+          "cdp_endpoint": "http://127.0.0.1:9226",
+          "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD"
+        },
+        "start_url": {
+          "url": "https://keep.google.com/"
+        },
+        "actions": [
+          {
+            "step_id": "open-only-test-note",
+            "action": "click",
+            "locator": {
+              "kind": "css",
+              "selector": ":text-is(\"보관 및 보관 해제 동작 확인\")"
+            },
+            "timeout_ms": 10000
+          },
+          {
+            "step_id": "set-title",
+            "action": "fill",
+            "locator": {
+              "kind": "role",
+              "role": "textbox",
+              "name": "제목"
+            },
+            "value": {
+              "source": "literal",
+              "value": "REA 과제 테스트"
+            },
+            "timeout_ms": 10000
+          },
+          {
+            "step_id": "save-title",
+            "action": "click",
+            "locator": {
+              "kind": "role",
+              "role": "button",
+              "name": "닫기"
+            },
+            "timeout_ms": 10000
+          },
+          {
+            "step_id": "settle-save",
+            "action": "wait_for_timeout",
+            "duration_ms": 1500
+          }
+        ],
+        "capture": {
+          "at_end": [
+            "url",
+            "dom"
+          ],
+          "events": []
+        }
+      },
+      "evidence_id": null,
+      "status": "error",
+      "error": {
+        "code": "execution_failure",
+        "message": "Analysis could not complete. Run `rea doctor` and review the reported details; repeating the unchanged request is not expected to succeed.",
+        "reason": null
+      },
+      "steps": [
+        {
+          "step_id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "open-only-test-note",
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "set-title",
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        }
+      ]
+    },
+    {
+      "label": "read-only-diagnostic",
+      "source": "shell-cli",
+      "tool": "rea doctor --client codex --json",
+      "status": "success",
+      "summary": {
+        "healthy": true,
+        "environment_healthy": false,
+        "node": "24.22.2",
+        "registration_codex": "healthy",
+        "interpretation": "Missing optional native analysis engines do not explain this browser scenario failure; exact underlying cause unresolved."
+      }
+    },
+    {
+      "label": "unstable-screenshot-failed",
+      "source": "mcp",
+      "tool": "capture_web_screenshot",
+      "arguments": {
+        "cdp_endpoint": "http://127.0.0.1:9226",
+        "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD",
+        "allowed_origins": [
+          "https://keep.google.com"
+        ]
+      },
+      "evidence_id": null,
+      "status": "error",
+      "error": {
+        "code": "target_unavailable",
+        "message": "capture_web_screenshot could not retain a stable document because the target changed during observation. Retry after navigation settles; refresh target discovery if the selected page was replaced.",
+        "reason": "target_changed"
+      },
+      "steps": null
+    },
+    {
+      "label": "rediscover-after-navigation",
+      "source": "mcp",
+      "tool": "list_browser_targets",
+      "arguments": {
+        "cdp_endpoint": "http://127.0.0.1:9226",
+        "allowed_origins": [
+          "https://keep.google.com"
+        ]
+      },
+      "evidence_id": "ev_b245f230b2dc7de7e3acca1a45da95c567c654c73e062c134b2751950e411010",
+      "status": "success",
+      "error": null,
+      "steps": null
+    },
+    {
+      "label": "keep_before",
+      "source": "mcp",
+      "tool": "capture_browser_scenario",
+      "arguments": {
+        "browser": {
+          "mode": "connect",
+          "cdp_endpoint": "http://127.0.0.1:9226",
+          "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD"
+        },
+        "start_url": {
+          "url": "https://keep.google.com/#NOTE/TEST_NOTE_ID"
+        },
+        "actions": [
+          {
+            "step_id": "wait-note-open",
+            "action": "wait_for",
+            "locator": {
+              "kind": "role",
+              "role": "button",
+              "name": "닫기"
+            },
+            "state": "visible",
+            "timeout_ms": 10000
+          },
+          {
+            "step_id": "settle-note",
+            "action": "wait_for_timeout",
+            "duration_ms": 1500
+          }
+        ],
+        "capture": {
+          "at_end": [
+            "accessibility",
+            "screenshot",
+            "dom",
+            "url"
+          ],
+          "events": []
+        }
+      },
+      "evidence_id": "ev_6571349922843dd2bf59fdbadc5c32ef870ce29f8561e357d6951596bf523546",
+      "status": "success",
+      "error": null,
+      "steps": [
+        {
+          "step_id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "wait-note-open",
+          "action": "wait_for",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "settle-note",
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ]
+    },
+    {
+      "label": "keep_archived",
+      "source": "mcp",
+      "tool": "capture_browser_scenario",
+      "arguments": {
+        "browser": {
+          "mode": "connect",
+          "cdp_endpoint": "http://127.0.0.1:9226",
+          "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD"
+        },
+        "start_url": {
+          "url": "https://keep.google.com/#NOTE/TEST_NOTE_ID"
+        },
+        "actions": [
+          {
+            "step_id": "archive-test-note",
+            "action": "click",
+            "locator": {
+              "kind": "role",
+              "role": "button",
+              "name": "보관처리"
+            },
+            "timeout_ms": 10000
+          },
+          {
+            "step_id": "settle-archive",
+            "action": "wait_for_timeout",
+            "duration_ms": 2000
+          },
+          {
+            "step_id": "reload-test-note-after-archive",
+            "action": "goto",
+            "destination": {
+              "url": "https://keep.google.com/#NOTE/TEST_NOTE_ID"
+            },
+            "wait_until": "load",
+            "timeout_ms": 15000
+          },
+          {
+            "step_id": "wait-unarchive-control",
+            "action": "wait_for",
+            "locator": {
+              "kind": "role",
+              "role": "button",
+              "name": "보관 취소"
+            },
+            "state": "visible",
+            "timeout_ms": 5000
+          }
+        ],
+        "capture": {
+          "at_end": [
+            "accessibility",
+            "screenshot",
+            "dom",
+            "url"
+          ],
+          "events": []
+        }
+      },
+      "evidence_id": "ev_6ad7a26e7ad44407a11e425d68f1079b46dfc40d5d37e10301316eef43d0328d",
+      "status": "success",
+      "error": null,
+      "steps": [
+        {
+          "step_id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "archive-test-note",
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "settle-archive",
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "reload-test-note-after-archive",
+          "action": "goto",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "wait-unarchive-control",
+          "action": "wait_for",
+          "status": "completed",
+          "error": null
+        }
+      ]
+    },
+    {
+      "label": "keep_unarchived",
+      "source": "mcp",
+      "tool": "capture_browser_scenario",
+      "arguments": {
+        "browser": {
+          "mode": "connect",
+          "cdp_endpoint": "http://127.0.0.1:9226",
+          "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD"
+        },
+        "start_url": {
+          "url": "https://keep.google.com/#NOTE/TEST_NOTE_ID"
+        },
+        "actions": [
+          {
+            "step_id": "unarchive-test-note",
+            "action": "click",
+            "locator": {
+              "kind": "role",
+              "role": "button",
+              "name": "보관 취소"
+            },
+            "timeout_ms": 10000
+          },
+          {
+            "step_id": "settle-unarchive",
+            "action": "wait_for_timeout",
+            "duration_ms": 2000
+          },
+          {
+            "step_id": "reopen-unarchived-test-note",
+            "action": "goto",
+            "destination": {
+              "url": "https://keep.google.com/#NOTE/TEST_NOTE_ID"
+            },
+            "wait_until": "load",
+            "timeout_ms": 15000
+          },
+          {
+            "step_id": "wait-archive-control",
+            "action": "wait_for",
+            "locator": {
+              "kind": "role",
+              "role": "button",
+              "name": "보관처리"
+            },
+            "state": "visible",
+            "timeout_ms": 10000
+          }
+        ],
+        "capture": {
+          "at_end": [
+            "accessibility",
+            "screenshot",
+            "dom",
+            "url"
+          ],
+          "events": []
+        }
+      },
+      "evidence_id": "ev_0d9b0bad914c22a017cd4e59eab07bafdcafa09b1dc6e8f428ae6ccd1d8c5be7",
+      "status": "success",
+      "error": null,
+      "steps": [
+        {
+          "step_id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "unarchive-test-note",
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "settle-unarchive",
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "reopen-unarchived-test-note",
+          "action": "goto",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "wait-archive-control",
+          "action": "wait_for",
+          "status": "completed",
+          "error": null
+        }
+      ]
+    },
+    {
+      "label": "keep_refreshed",
+      "source": "mcp",
+      "tool": "capture_browser_scenario",
+      "arguments": {
+        "browser": {
+          "mode": "connect",
+          "cdp_endpoint": "http://127.0.0.1:9226",
+          "target_id": "BADA75DCE1CBC4D2E24F5C036AADF5FD"
+        },
+        "start_url": {
+          "url": "https://keep.google.com/#NOTE/TEST_NOTE_ID"
+        },
+        "actions": [
+          {
+            "step_id": "refresh-settle",
+            "action": "wait_for_timeout",
+            "duration_ms": 2000
+          },
+          {
+            "step_id": "confirm-restored-archive-control",
+            "action": "wait_for",
+            "locator": {
+              "kind": "role",
+              "role": "button",
+              "name": "보관처리"
+            },
+            "state": "visible",
+            "timeout_ms": 10000
+          }
+        ],
+        "capture": {
+          "at_end": [
+            "accessibility",
+            "screenshot",
+            "dom",
+            "url"
+          ],
+          "events": []
+        }
+      },
+      "evidence_id": "ev_de86a82bd9600e56b35900cd880f0a2581827d1902605ed1727ad80b8430fb33",
+      "status": "success",
+      "error": null,
+      "steps": [
+        {
+          "step_id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "refresh-settle",
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "step_id": "confirm-restored-archive-control",
+          "action": "wait_for",
+          "status": "completed",
+          "error": null
+        }
+      ]
+    }
+  ]
+}

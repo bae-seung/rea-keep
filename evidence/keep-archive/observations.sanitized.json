@@ -1,0 +1,209 @@
+{
+  "privacy": "Selected REA Evidence excerpts, not complete raw Evidence",
+  "observations": [
+    {
+      "stage": "01-before",
+      "evidence_id": "ev_6571349922843dd2bf59fdbadc5c32ef870ce29f8561e357d6951596bf523546",
+      "operation": "capture_browser_scenario",
+      "confidence": "observed",
+      "source_screenshot_sha256": "f41f353ebc48c4d85aafffb447582d3abb3bd90a77642be1caa005435b0dc9c7",
+      "source_screenshot_bytes": 131807,
+      "requested_title_present_in_dom": true,
+      "accessibility_excerpt": "- document:\n  - text: 중요 메모를 상단에 고정합니다.\n  - button \"확인\"\n  - toolbar:\n    - button \"고정\"\n  - textbox\n  - combobox: 보관 및 보관 해제 동작 확인\n  - text: 오전 8:15에 수정됨\n  - button \"닫기\"\n  - toolbar:\n    - button \"서식 옵션\"\n    - button \"배경 옵션\"\n    - button \"알림 받기\"\n    - button \"공동작업자\"\n    - button \"이미지 추가\"\n    - button \"보관처리\"\n    - button \"더보기\"\n    - button \"실행취소\" [disabled]\n    - button \"재실행\" [disabled]\n  - region",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "id": "wait-note-open",
+          "action": "wait_for",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "id": "settle-note",
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "network_events_recorded": 0,
+      "limitations": [
+        "Artifact identity is unavailable for this observation.",
+        "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+        "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+        "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+        "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+        "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+        "Storage values are hashed only after declared-secret redaction.",
+        "CDP attachment cannot recover pre-attach events or guarantee launch-time context options.",
+        "Attached locale en-US applies to Intl formatting only; navigator.language(s) and Accept-Language remain caller-controlled. Use launch mode for matching page and request languages.",
+        "Detaching a CDP page session may clear caller-owned navigator.platform emulation. REA cannot snapshot the caller's complete user-agent/client-hint state before attachment; use launch mode to avoid mutating that external browser.",
+        "Browser host platform and architecture were not observed."
+      ],
+      "privacy": "Selected modal accessibility only; full DOM and full screenshot excluded. Test note URL replaced by TEST_NOTE_URL in submitted invocation log."
+    },
+    {
+      "stage": "02-archived",
+      "evidence_id": "ev_6ad7a26e7ad44407a11e425d68f1079b46dfc40d5d37e10301316eef43d0328d",
+      "operation": "capture_browser_scenario",
+      "confidence": "observed",
+      "source_screenshot_sha256": "428d91a0ca877269274ddd7b84e6fe88a808174148b5e6f0bac81f2a472a0724",
+      "source_screenshot_bytes": 88137,
+      "requested_title_present_in_dom": true,
+      "accessibility_excerpt": "- document:\n  - text: 중요 메모를 상단에 고정합니다.\n  - button \"확인\"\n  - toolbar:\n    - button \"고정\"\n  - textbox\n  - combobox: 보관 및 보관 해제 동작 확인\n  - text: 메모를 보관처리했습니다. • 오전 8:15에 수정됨\n  - button \"닫기\"\n  - toolbar:\n    - button \"서식 옵션\" [disabled]\n    - button \"배경 옵션\"\n    - button \"알림 받기\"\n    - button \"공동작업자\"\n    - button \"이미지 추가\"\n    - button \"보관 취소\" [pressed]\n    - button \"더보기\"\n    - button \"실행취소\" [disabled]\n    - button \"재실행\" [disabled]\n  - region",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "id": "archive-test-note",
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "id": "settle-archive",
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "id": "reload-test-note-after-archive",
+          "action": "goto",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "id": "wait-unarchive-control",
+          "action": "wait_for",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "network_events_recorded": 0,
+      "limitations": [
+        "Artifact identity is unavailable for this observation.",
+        "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+        "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+        "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+        "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+        "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+        "Storage values are hashed only after declared-secret redaction.",
+        "CDP attachment cannot recover pre-attach events or guarantee launch-time context options.",
+        "Attached locale en-US applies to Intl formatting only; navigator.language(s) and Accept-Language remain caller-controlled. Use launch mode for matching page and request languages.",
+        "Detaching a CDP page session may clear caller-owned navigator.platform emulation. REA cannot snapshot the caller's complete user-agent/client-hint state before attachment; use launch mode to avoid mutating that external browser.",
+        "Browser host platform and architecture were not observed."
+      ],
+      "privacy": "Selected modal accessibility only; full DOM and full screenshot excluded. Test note URL replaced by TEST_NOTE_URL in submitted invocation log."
+    },
+    {
+      "stage": "03-unarchived",
+      "evidence_id": "ev_0d9b0bad914c22a017cd4e59eab07bafdcafa09b1dc6e8f428ae6ccd1d8c5be7",
+      "operation": "capture_browser_scenario",
+      "confidence": "observed",
+      "source_screenshot_sha256": "e52f8b240105ced5f1802d3bad341573717e5dd5512a0140c7e128770e041108",
+      "source_screenshot_bytes": 132468,
+      "requested_title_present_in_dom": true,
+      "accessibility_excerpt": "- document:\n  - text: 중요 메모를 상단에 고정합니다.\n  - button \"확인\"\n  - toolbar:\n    - button \"고정\"\n  - textbox\n  - combobox: 보관 및 보관 해제 동작 확인\n  - text: 오전 8:15에 수정됨\n  - button \"닫기\"\n  - toolbar:\n    - button \"서식 옵션\" [disabled]\n    - button \"배경 옵션\"\n    - button \"알림 받기\"\n    - button \"공동작업자\"\n    - button \"이미지 추가\"\n    - button \"보관처리\"\n    - button \"더보기\"\n    - button \"실행취소\" [disabled]\n    - button \"재실행\" [disabled]\n  - region",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "id": "unarchive-test-note",
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "id": "settle-unarchive",
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "id": "reopen-unarchived-test-note",
+          "action": "goto",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "id": "wait-archive-control",
+          "action": "wait_for",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "network_events_recorded": 0,
+      "limitations": [
+        "Artifact identity is unavailable for this observation.",
+        "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+        "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+        "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+        "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+        "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+        "Storage values are hashed only after declared-secret redaction.",
+        "CDP attachment cannot recover pre-attach events or guarantee launch-time context options.",
+        "Attached locale en-US applies to Intl formatting only; navigator.language(s) and Accept-Language remain caller-controlled. Use launch mode for matching page and request languages.",
+        "Detaching a CDP page session may clear caller-owned navigator.platform emulation. REA cannot snapshot the caller's complete user-agent/client-hint state before attachment; use launch mode to avoid mutating that external browser.",
+        "Browser host platform and architecture were not observed."
+      ],
+      "privacy": "Selected modal accessibility only; full DOM and full screenshot excluded. Test note URL replaced by TEST_NOTE_URL in submitted invocation log."
+    },
+    {
+      "stage": "04-refreshed",
+      "evidence_id": "ev_de86a82bd9600e56b35900cd880f0a2581827d1902605ed1727ad80b8430fb33",
+      "operation": "capture_browser_scenario",
+      "confidence": "observed",
+      "source_screenshot_sha256": "bc09221e251f4f69fc8e13cc7e1d609200efc88b1900358fbf4d395c1c8f2e5f",
+      "source_screenshot_bytes": 132257,
+      "requested_title_present_in_dom": true,
+      "accessibility_excerpt": "- document:\n  - text: 중요 메모를 상단에 고정합니다.\n  - button \"확인\"\n  - toolbar:\n    - button \"고정\"\n  - textbox\n  - combobox: 보관 및 보관 해제 동작 확인\n  - text: 오전 8:15에 수정됨\n  - button \"닫기\"\n  - toolbar:\n    - button \"서식 옵션\" [disabled]\n    - button \"배경 옵션\"\n    - button \"알림 받기\"\n    - button \"공동작업자\"\n    - button \"이미지 추가\"\n    - button \"보관처리\"\n    - button \"더보기\"\n    - button \"실행취소\" [disabled]\n    - button \"재실행\" [disabled]\n  - region",
+      "steps": [
+        {
+          "id": "scenario_start",
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "id": "refresh-settle",
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "id": "confirm-restored-archive-control",
+          "action": "wait_for",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "network_events_recorded": 0,
+      "limitations": [
+        "Artifact identity is unavailable for this observation.",
+        "Event sequence records provider receipt order; simultaneous browser causality is not inferred.",
+        "Network content is retained only when selected; Playwright response-body bytes are API results and are not guaranteed to match wire bytes.",
+        "Request bytes are limited to what Playwright exposes; not_exposed does not establish body absence or multipart file coverage.",
+        "Network content reads settle within 5 seconds each and the observer does not request bodies from unfinished responses.",
+        "Playwright scenario events do not expose request initiator stacks; receipt order does not prove causality.",
+        "Storage values are hashed only after declared-secret redaction.",
+        "CDP attachment cannot recover pre-attach events or guarantee launch-time context options.",
+        "Attached locale en-US applies to Intl formatting only; navigator.language(s) and Accept-Language remain caller-controlled. Use launch mode for matching page and request languages.",
+        "Detaching a CDP page session may clear caller-owned navigator.platform emulation. REA cannot snapshot the caller's complete user-agent/client-hint state before attachment; use launch mode to avoid mutating that external browser.",
+        "Browser host platform and architecture were not observed."
+      ],
+      "privacy": "Selected modal accessibility only; full DOM and full screenshot excluded. Test note URL replaced by TEST_NOTE_URL in submitted invocation log."
+    }
+  ]
+}

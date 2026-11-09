@@ -1,0 +1,18 @@
+{
+  "tool": "list_browser_targets",
+  "arguments": {
+    "cdp_endpoint": "http://127.0.0.1:9226",
+    "allowed_origins": [
+      "https://keep.google.com"
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"error\":{\"code\":\"provider_unavailable\",\"category\":\"unavailable\",\"message\":\"list_browser_targets could not reach the selected loopback debugging endpoint. Verify that the target process is running with debugging enabled and that the endpoint's port matches it, then retry.\",\"retryable\":true,\"remediation\":{\"action\":\"list_browser_targets could not reach the selected loopback debugging endpoint. Verify that the target process is running with debugging enabled and that the endpoint's port matches it, then retry.\"},\"details\":{\"operation\":\"list_browser_targets\",\"reason\":\"endpoint_unreachable\"}}}"
+      }
+    ],
+    "isError": true
+  }
+}

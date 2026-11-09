@@ -1,0 +1,55 @@
+package kr.rea.keep;
+import jakarta.validation.Valid;
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+@Controller
+public class NoteController {
+ private final NoteService service;
+ public NoteController(NoteService service) { this.service=service; }
+ @GetMapping("/") String list(Model model) {
+  model.addAttribute("notes",service.list()); return "notes";
+ }
+ @GetMapping("/notes/new") String createForm(Model model) {
+  model.addAttribute("noteForm",new NoteForm()); return "editor";
+ }
+ @GetMapping("/notes/{id}") String editForm(@PathVariable long id, Model model) {
+  Note note=service.get(id); NoteForm form=new NoteForm();
+  form.setTitle(note.getTitle()); form.setBody(note.getBody());
+  model.addAttribute("noteForm",form); model.addAttribute("noteId",id); return "editor";
+ }
+ @PostMapping("/notes") String create(@Valid @ModelAttribute NoteForm noteForm, BindingResult errors,
+   Model model, RedirectAttributes redirect, HttpServletResponse response) {
+  return save(null,noteForm,errors,model,redirect,response);
+ }
+ @PostMapping("/notes/{id}") String update(@PathVariable long id,@Valid @ModelAttribute NoteForm noteForm,
+   BindingResult errors,Model model,RedirectAttributes redirect,HttpServletResponse response) {
+  return save(id,noteForm,errors,model,redirect,response);
+ }
+ private String save(Long id,NoteForm form,BindingResult errors,Model model,
+   RedirectAttributes redirect,HttpServletResponse response) {
+  model.addAttribute("noteId",id);
+  if (errors.hasErrors()) { response.setStatus(400); return "editor"; }
+  try {
+   if (id==null) service.create(form); else service.update(id,form);
+  } catch (NoteNotFoundException e) { throw e;
+  } catch (RuntimeException e) {
+   // DB 오류의 원문에는 연결 정보가 포함될 수 있으므로 출력하지 않는다.
+   response.setStatus(503);
+   model.addAttribute("saveError","저장을 완료하지 못했습니다. 입력 내용을 보관하고 목록에서 저장 여부를 확인한 뒤 다시 시도해 주세요.");
+   return "editor";
+  }
+  redirect.addFlashAttribute("success","메모를 저장했습니다."); return "redirect:/";
+ }
+ @ExceptionHandler(NoteNotFoundException.class)
+ String notFound(HttpServletResponse response,Model model) {
+  response.setStatus(404); model.addAttribute("message","메모를 찾을 수 없습니다."); return "error";
+ }
+ @ExceptionHandler(RuntimeException.class)
+ String unavailable(HttpServletResponse response,Model model) {
+  response.setStatus(503); model.addAttribute("message","메모를 불러오지 못했습니다. DB 연결 상태를 확인하고 다시 시도해 주세요."); return "error";
+ }
+}
