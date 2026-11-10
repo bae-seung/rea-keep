@@ -61,4 +61,52 @@ class NoteIntegrationTest {
   mvc.perform(post("/notes").param("title"," ").param("body","\n")).andExpect(status().isBadRequest()).andExpect(view().name("editor"));
   assertThat(repository.count()).isZero();
  }
+ @Test void archiveSeparatesListsAndPreservesAllContentAndTimes() {
+  Note note=service.create(form("보관 대상","내용 보존"));
+  Note other=service.create(form("일반 메모","남아 있음"));
+  assertThat(note.isArchived()).isFalse();
+  service.setArchived(note.getId(),true);
+  assertThat(service.list()).extracting(Note::getId).containsExactly(other.getId());
+  assertThat(service.archivedList()).extracting(Note::getId).containsExactly(note.getId());
+  Note archived=service.get(note.getId());
+  assertThat(archived.getTitle()).isEqualTo(note.getTitle());
+  assertThat(archived.getBody()).isEqualTo(note.getBody());
+  assertThat(archived.getCreatedAt()).isEqualTo(note.getCreatedAt());
+  assertThat(archived.getUpdatedAt()).isEqualTo(note.getUpdatedAt());
+  service.setArchived(note.getId(),true); // 같은 요청을 반복해도 상태가 반전되지 않음
+  assertThat(service.get(note.getId()).isArchived()).isTrue();
+  service.setArchived(note.getId(),false);
+  service.setArchived(note.getId(),false);
+  assertThat(service.archivedList()).isEmpty();
+  assertThat(service.list()).extracting(Note::getId).containsExactlyInAnyOrder(note.getId(),other.getId());
+  Note restored=service.get(note.getId());
+  assertThat(restored.getTitle()).isEqualTo(note.getTitle());
+  assertThat(restored.getBody()).isEqualTo(note.getBody());
+  assertThat(restored.getCreatedAt()).isEqualTo(note.getCreatedAt());
+  assertThat(restored.getUpdatedAt()).isEqualTo(note.getUpdatedAt());
+ }
+ @Test void archiveWebFlowAndEditingArchivedNote() throws Exception {
+  Note note=service.create(form("고유 보관 제목","보관 본문"));
+  long id=note.getId();
+  mvc.perform(get("/archive")).andExpect(status().isOk())
+   .andExpect(content().string(org.hamcrest.Matchers.containsString("보관함이 비어 있습니다")));
+  mvc.perform(post("/notes/"+id+"/archive")).andExpect(status().is3xxRedirection())
+   .andExpect(redirectedUrl("/")).andExpect(flash().attribute("success","메모를 보관했습니다."));
+  mvc.perform(get("/")).andExpect(content().string(org.hamcrest.Matchers.not(org.hamcrest.Matchers.containsString("고유 보관 제목"))));
+  mvc.perform(get("/archive")).andExpect(status().isOk())
+   .andExpect(content().string(org.hamcrest.Matchers.containsString("고유 보관 제목")))
+   .andExpect(content().string(org.hamcrest.Matchers.containsString("/notes/"+id+"/unarchive")));
+  mvc.perform(post("/notes/"+id).param("title","보관 중 수정").param("body","수정 내용"))
+   .andExpect(redirectedUrl("/archive"));
+  assertThat(service.get(id).isArchived()).isTrue();
+  assertThat(service.get(id).getCreatedAt()).isEqualTo(note.getCreatedAt());
+  mvc.perform(post("/notes/"+id+"/unarchive")).andExpect(redirectedUrl("/archive"));
+  mvc.perform(get("/")).andExpect(content().string(org.hamcrest.Matchers.containsString("보관 중 수정")));
+  mvc.perform(get("/archive")).andExpect(content().string(org.hamcrest.Matchers.not(org.hamcrest.Matchers.containsString("보관 중 수정"))));
+ }
+ @Test void missingArchiveTargetDoesNotCreateNote() throws Exception {
+  mvc.perform(post("/notes/999999/archive")).andExpect(status().isNotFound());
+  mvc.perform(post("/notes/999999/unarchive")).andExpect(status().isNotFound());
+  assertThat(repository.count()).isZero();
+ }
 }

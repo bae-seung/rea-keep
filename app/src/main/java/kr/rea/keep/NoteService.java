@@ -13,7 +13,14 @@ public class NoteService {
  public NoteService(NoteRepository repository, Clock clock, Validator validator) {
   this.repository=repository; this.clock=clock; this.validator=validator;
  }
- public List<Note> list() { return repository.findAllByOrderByUpdatedAtDescIdDesc(); }
+ public List<Note> list() { return repository.findAllByArchivedOrderByUpdatedAtDescIdDesc(false); }
+ public List<Note> archivedList() { return repository.findAllByArchivedOrderByUpdatedAtDescIdDesc(true); }
+ @Transactional
+ public void setArchived(long id, boolean archived) {
+  Note note=get(id);
+  note.setArchived(archived);
+  repository.saveAndFlush(note);
+ }
  public Note get(long id) { return repository.findById(id).orElseThrow(NoteNotFoundException::new); }
  @Transactional
  public Note create(NoteForm form) {

@@ -31,4 +31,18 @@ class NoteFailureTest {
   when(service.list()).thenThrow(new DataAccessResourceFailureException("offline"));
   mvc.perform(get("/")).andExpect(status().isServiceUnavailable()).andExpect(view().name("error"));
  }
+ @Test void archiveAndUnarchiveFailuresDoNotReportSuccess() throws Exception {
+  doThrow(new DataAccessResourceFailureException("private connection details"))
+   .when(service).setArchived(anyLong(),anyBoolean());
+  for (String action : new String[]{"archive","unarchive"}) {
+   mvc.perform(post("/notes/7/"+action)).andExpect(status().isServiceUnavailable())
+    .andExpect(view().name("error")).andExpect(flash().attributeCount(0))
+    .andExpect(content().string(org.hamcrest.Matchers.containsString("보관 상태 변경을 완료하지 못했습니다")))
+    .andExpect(content().string(org.hamcrest.Matchers.not(org.hamcrest.Matchers.containsString("private connection details"))));
+  }
+ }
+ @Test void archiveListFailureDoesNotLookEmpty() throws Exception {
+  when(service.archivedList()).thenThrow(new DataAccessResourceFailureException("offline"));
+  mvc.perform(get("/archive")).andExpect(status().isServiceUnavailable()).andExpect(view().name("error"));
+ }
 }

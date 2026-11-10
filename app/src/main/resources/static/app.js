@@ -1,11 +1,12 @@
-const form = document.querySelector('form');
-if (form) {
+document.querySelectorAll('form').forEach(form => {
+  const button = form.querySelector('button[type="submit"]');
+  const state = form.querySelector('[data-submit-state], #save-state');
   form.addEventListener('submit', () => {
-    form.querySelector('button[type="submit"]').disabled = true;
-    document.getElementById('save-state').textContent = '저장 중…';
+    if (button) button.disabled = true;
+    if (state) state.textContent = '처리 중…';
   });
   window.addEventListener('pageshow', () => {
-    form.querySelector('button[type="submit"]').disabled = false;
-    document.getElementById('save-state').textContent = '';
+    if (button) button.disabled = false;
+    if (state) state.textContent = '';
   });
-}
+});

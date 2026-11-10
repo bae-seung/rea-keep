@@ -91,3 +91,9 @@ typescript
 !/evidence/keep-archive/launch-analysis-chrome.sh
 !/evidence/keep-archive/previous-connection-failure.ko.md
 !/evidence/keep-archive/rea-connection-error.json
+
+# 추가 목록 이동 관찰의 정제 기록만 포함
+!/evidence/keep-archive-list/
+!/evidence/keep-archive-list/README.ko.md
+!/evidence/keep-archive-list/observation.sanitized.json
+!/evidence/keep-archive-list/SHA256SUMS.txt

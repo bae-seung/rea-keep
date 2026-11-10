@@ -1,0 +1,55 @@
+{
+  "kind": "selected excerpts, not complete raw Evidence",
+  "connection": {
+    "evidence_id": "ev_81dcb498d2b7577cf7009b4b5c3219817970f07e5f7b15c76c9372f1f8b28d43",
+    "operation": "list_browser_targets",
+    "endpoint": "http://127.0.0.1:9226",
+    "browser": "Chrome/156.0.8078.81",
+    "connected": true
+  },
+  "inspection": {
+    "evidence_id": "ev_2600b1c7019736d4f7a2f2374ede38eb246121da8bedef2d66f9986c36075ba5",
+    "operation": "inspect_web_page",
+    "captured_at": "2026-11-09T13:53:44.191Z",
+    "target": "existing TEST_NOTE_ID",
+    "observation_ms": 0,
+    "selected_accessibility": [
+      {
+        "role": "StaticText",
+        "name": "지금은 연결할 수 없습니다. 나중에 다시 시도해 주세요.",
+        "states": []
+      },
+      {
+        "role": "StaticText",
+        "name": "REA 과제 테스트",
+        "states": []
+      },
+      {
+        "role": "button",
+        "name": "보관처리",
+        "states": [
+          {
+            "name": "disabled",
+            "value": true
+          },
+          {
+            "name": "pressed",
+            "value": "false"
+          }
+        ]
+      },
+      {
+        "role": "StaticText",
+        "name": "보관 및 보관 해제 동작 확인",
+        "states": []
+      }
+    ]
+  },
+  "actions_performed": [],
+  "list_transition": "unverified",
+  "limitations": [
+    "CDP connection is healthy but Google Keep UI reports unavailable connection and disabled archive control.",
+    "No personal note was opened or modified. No archive/unarchive mutation was attempted.",
+    "No raw DOM, account metadata, network bodies, credentials, screenshots or note URL retained in this file."
+  ]
+}
