@@ -1,0 +1,1721 @@
+{
+  "date": "2026-11-11",
+  "actor": "Codex direct browser verification",
+  "environment": {
+    "browser": "Chrome 157",
+    "app": "http://127.0.0.1:8080",
+    "database": "MySQL at 127.0.0.1:3306; 8.0.44 is user-reported version; SQL version query not performed",
+    "transport": "REA CDP 9227"
+  },
+  "scope": {
+    "notesCreated": [
+      3,
+      4,
+      5
+    ],
+    "labelsCreated": [
+      1,
+      2
+    ],
+    "notesRetained": [
+      3,
+      4
+    ],
+    "notesPermanentlyDeleted": [
+      5
+    ],
+    "labelsRetained": [
+      1
+    ],
+    "labelsDeleted": [
+      2
+    ],
+    "personalNotesModified": false
+  },
+  "restart": {
+    "serverPids": [
+      39471,
+      40114,
+      40349
+    ],
+    "mysqlTcpEstablishedObserved": true,
+    "firstLabelPageIdentical": true,
+    "secondLabelPageIdentical": true
+  },
+  "automationLimitations": [
+    "An invalid CSS first-of-type selector waited; that orchestration call was terminated. A bounded role selector completed the checkbox action and verified the result.",
+    "Screenshots capture only task data, not personal note list pages.",
+    "Creation timestamps and invalid POST state-change responses were covered by H2 tests, not independently queried from MySQL."
+  ],
+  "screenshots": [
+    {
+      "name": "01-cards.png",
+      "sha256": "627469a29e31c033fa203ab6f4dfca4053428a4d9952ca8543821eaf937ff26f",
+      "bytes": 97636
+    },
+    {
+      "name": "02-delete-confirm.png",
+      "sha256": "b96278cba3ee137444809c12c7fdbfd3408dcc58ccceaa0039ec238a62da7af0",
+      "bytes": 69006
+    },
+    {
+      "name": "03-editor-settings.png",
+      "sha256": "a81503770d82806a048a71de5f58b1d9a157c41d4fd71be3ef407c968759992d",
+      "bytes": 69585
+    }
+  ],
+  "scenarios": [
+    {
+      "name": "label create",
+      "evidence": "ev_13e06f050f86d53a0bad1740577f00fcc2b0deb87ba8ea33b3a9645844caa1c9",
+      "passed": true
+    },
+    {
+      "name": "create checklist labeled note",
+      "evidence": "ev_36ded73fdded75b78aa194e8bb52b98e064600c368078430612ddc8da90da4f6",
+      "note": "POST 직후 캡처의 카드 탐색은 완료 증거로 사용하지 않음. 후속 라벨 목록과 편집 페이지에서 저장을 확인함."
+    },
+    {
+      "name": "edit note 3",
+      "evidence": "ev_3bd0d88148ff653f4abdff4de9855764d0bac69227582d2ad77869bf7b8f62c5",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "refresh saved edit",
+      "evidence": "ev_c7e5d9075122a3b200db323ac8f191b68579aee710d81b38fcb7fe04391d3622",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 전체 기능 수정",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "수정된 본문 검색표식 persistence1111",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "추가 후 제거할 항목",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "remove checklist line and save",
+      "evidence": "ev_e8bb5f10a8fb7126e0bcebace1953d908cdb90feed64443d923880feb2e6a0e5",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "check first item",
+      "evidence": "ev_d2242899351533f1b4d757234136a04924bc7f51419112f0d3f7a7afcdbcb12e",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "☑ 검증항목1111",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "추가 후 제거할 항목",
+          "expected": false,
+          "passed": true
+        },
+        {
+          "text": "value=\"GREEN\" selected",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "search 전체 기능 수정",
+      "evidence": "ev_12d03c59bc3222804c10e4d7afb839c7e3ac4e34c4830598dfc672248d820b61",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 전체 기능 수정",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "search 검색표식",
+      "evidence": "ev_dd0b828438c0271508b52bd061bd5336a6367b75cfa0f4549a08de2f1beb2f80",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 전체 기능 수정",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "search 검증항목1111",
+      "evidence": "ev_1ba6b2d0a6fc41feeccab53906d1519d731fc0f7fa60632cabfeba6eca9227ce",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 전체 기능 수정",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "search REA-QA-NOTFOUND-1111",
+      "evidence": "ev_46d6a6652ef9a9be9871c1519f1a218557e384edbe4923ef7976a751927fb3a4",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 전체 기능 수정",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "rename own label",
+      "evidence": "ev_40eb5e7cce3decc99434415fa436f29009ceb0441ce3bd167179829cd556f452",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 검증",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "label query and states",
+      "evidence": "ev_564c07cf1d49c58fc35a54d404ef07abdfc674a8e0fff89ae63d5b07ea2a70c7",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 전체 기능 수정",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "color-GREEN",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "고정 해제",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "☑ 검증항목1111",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "create REA-QA-1111 보관 복원",
+      "evidence": "ev_d76cd798c9a68242ec7e9fc98a0afeb6d4b48097c69d1107119c4deed427f792",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "select_option",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "create REA-QA-1111 영구 삭제",
+      "evidence": "ev_7f94c7a9787c01aa8e14bc6472e73af0ecfef6ffa44a46b0be0cfce7ca011703",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "select_option",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "own note inventory",
+      "evidence": "ev_e8ba4816374343e407b39f2b55c107ffce18c6c151bdf871d5cadaf9f4caac4c",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "archive 4",
+      "evidence": "ev_e49196d7faa153577d5b06380fab9ca7c253f3c805c53e2a4c917654f2e5215b",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "archive absent normal",
+      "evidence": "ev_b0c8dd15ef2a880c43d623e7b4777820f52192bfc56cbb015457016942ec755d",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "href=\"/notes/4\"",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "archive present archive",
+      "evidence": "ev_8a3a5c16867e240745412f85df286699bb823bf03581628d464b5d564c68c9a4",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 보관 복원",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "archive included search",
+      "evidence": "ev_e5b459fe4967fe3c10e3b1b76e6e71bccfa254b4d73b8d3ac69fa68e27280064",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 보관 복원",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "trash 5",
+      "evidence": "ev_97f4ec45f8165cf4da961e6567092bab8d0d7524674cb1c07e4fe0f774861f55",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 영구 삭제",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "trash excluded search",
+      "evidence": "ev_df889338329a944ccee39af0ec2f6a0b61a834042abd3a691a7b4a8790cd9a75",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 영구 삭제",
+          "expected": false,
+          "passed": true
+        },
+        {
+          "text": "검색 결과가 없습니다",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "label archive included trash excluded",
+      "evidence": "ev_c85f87eee54f4e3c1c04bff4573a93eb009d235969a9e4979ea649b7ada65a13",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 보관 복원",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "REA-QA-1111 영구 삭제",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "restart persisted label contents pin color checklist",
+      "evidence": "ev_59dc78a06931b9f93c2fae2236defe90f6ced6cac06d80060b6b8ca953b9ae19",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 전체 기능 수정",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "수정된 본문 검색표식 persistence1111",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "color-GREEN",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "고정 해제",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "☑ 검증항목1111",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "REA-QA-1111 보관 복원",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "REA-QA-1111 영구 삭제",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "restart normal list separation",
+      "evidence": "ev_87ad052a56ebd757268be843d6d22a700295c5904f910e43596235b2a154cf92",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "href=\"/notes/3\"",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "href=\"/notes/4\"",
+          "expected": false,
+          "passed": true
+        },
+        {
+          "text": "href=\"/notes/5\"",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "restart archive persistence",
+      "evidence": "ev_fecf02ebb158dfa6c71885d77f23eceb24c30a0454443d1c5f9fe1990e6d1701",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 보관 복원",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "restart trash persistence",
+      "evidence": "ev_ee7984409dbfee5f663b02a869021342d55645341578635934a9c9b3e15c47e9",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 영구 삭제",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "trash archived note 4",
+      "evidence": "ev_287214d5255dc2c0d3d26b65f26154dd47b073e32875fd78fad80cd4cce23d90",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 보관 복원",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "trashed editor blocked",
+      "evidence": "ev_c28729b0be507d24507775a0c85c2a24bb6f208d4d391a396b611ae920d78ea5",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "체크리스트",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "restore archived note 4",
+      "evidence": "ev_37c8f434646c1384232f60e48fd3931690f412bc464ed0cc1947de533becabb3",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "restored archive content",
+      "evidence": "ev_07624cc2298465d308ec03c12da965675e409f82dca49a8d8a366e36c191d755",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 보관 복원",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "보관 복원 내용 유지 archive1111",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "restore does not put archived in normal",
+      "evidence": "ev_eea7ee3926d99f1da79d2b8e8817f9eabbcac9184cce07bb0a145c9c1075ca57",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "href=\"/notes/4\"",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "unarchive 4",
+      "evidence": "ev_003e65ffe7c893c7441835c83798051a52aaa2a71b2fc6438db5f35f45b51168",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "unarchive returns normal",
+      "evidence": "ev_f463fb532b1bb8ded95b151429c8351d0e9e70650b4de99909d2085cd03e72d1",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 보관 복원",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "restore normal 5",
+      "evidence": "ev_ffc41729f0426d7ef3ae56b7f71ce68bed69d96da39f93782b4ead4e7c89e154",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "normal restoration",
+      "evidence": "ev_0d5aef68fb8d47e3cd3c9ba6756cd0dfd5e449d3f640a96ae3c4ee26f5b20f94",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 영구 삭제",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "테스트 전용 삭제 대상 trash1111",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "trash again for deletion",
+      "evidence": "ev_f86f00b9035d0e8086cfe09eb775d77a1044d63654f42bde3a715aeba635f1e7",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "delete confirmation",
+      "evidence": "ev_95e1c0d575aa8e84941eec1ccb82fd6ba5a5fb9c2ee4b5f4a5171deccad2365f",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 영구 삭제",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "name=\"confirmed\"",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "cancel deletion",
+      "evidence": "ev_76e6d27bfa64451d974e14be87e4a83ea3f02331fe22d838ec990e4740f567c7",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 영구 삭제",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "permanent delete own note",
+      "evidence": "ev_7c90386ebfc0b10091f6caeb6c432d9bfbac6a6b8ae63493dd1217e393776d6d",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 영구 삭제",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "deleted note unavailable",
+      "evidence": "ev_2707a01a8db017a03c69b9d30143aba4f4238207a6c52d91e6afd57b804d12db",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "메모를 찾을 수 없습니다",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "active note delete confirmation refused",
+      "evidence": "ev_2d10d67889aea1b32b228e2804998d1e445a55ab9658443420061f4e8ef63296",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "영구 삭제에 동의합니다",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "blank checklist validation",
+      "evidence": "ev_d524712275014ae158b770077272a0eaee03b9dafc8fed660319a05ae3e9cce2",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "blank note validation",
+      "evidence": "ev_11d1690d78eb95fc4e58a815aa9ed48f1a40e5263892bfcdcc55c1ecd2a585a2",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "temporary label create",
+      "evidence": "ev_206b11e7da0e0e6580bf4363cbda0c5718db093e1d640e33d3257e9e4552b1b6",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "fill",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "attach temporary label",
+      "evidence": "ev_2dc30b5c50c504866835e52b3468fff88317305c63cb69d3c6cca14ab933b5ca",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "select_option",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "temporary label query",
+      "evidence": "ev_abd8d94559d7c163f99f622da0f275dff58bf6f6f625deab66f8ac8afac9a46f",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 보관 복원",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "delete temporary label",
+      "evidence": "ev_9539bc6c00fc9efa32c7e9766d46ecd7790ef95f474c5645f4bd3d53fbde7e01",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 삭제검증",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "label deletion preserves note",
+      "evidence": "ev_5470c40c001e2076682537a73ed18e9f8b6f842503e8c0a0a8d077a4d196428e",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 보관 복원",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "보관 복원 내용 유지 archive1111",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "REA-QA-1111 삭제검증",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "restore demo label and color",
+      "evidence": "ev_fb8a7ae060d5d02287beb68d9b891122556229d98f48339997157c2aef7ed65a",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "select_option",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "blue color",
+      "evidence": "ev_6db9e8184bfea3a9910aa73ec6a292df8f93388367bcfd10a9f5066df4217f9a",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "select_option",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "check off",
+      "evidence": "ev_95ddcc87281a710ee77cf01488dbe824a1821a7ad23b402761b30f75850c1752",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "☐ 검증항목1111",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "check on again",
+      "evidence": "ev_4267ff067ca612383d2a4b1963c977751bb20acb9aab975f6e91ac6f21d307dc",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "☑ 검증항목1111",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "unpin",
+      "evidence": "ev_d9c717e291683bc4a3104aedf60b1582c236aa646f776bc4ae0ca391d281a079",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "verify unpinned and pin again",
+      "evidence": "ev_ccd2cf5329378a979efea735e5f15e9d68cb754950c4a14ed7c92547f9b32cce",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "click",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    },
+    {
+      "name": "final label view",
+      "evidence": "ev_798c4213a12a8d0b876dcbc3f5fab8f763914d19271d02e89622e9ab281b51a0",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "color-GREEN",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "color-BLUE",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "고정 해제",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "REA-QA-1111 전체 기능 수정",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "second restart final note state",
+      "evidence": "ev_af116ff3bfc17b67c2c063fc114ec6b1cd3e032a38954b3879385f4b777c3e2f",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "color-GREEN",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "color-BLUE",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "☑ 검증항목1111",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "REA-QA-1111 전체 기능 수정",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "REA-QA-1111 보관 복원",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "REA-QA-1111 영구 삭제",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "second restart deletion remains",
+      "evidence": "ev_54d198a2c9bd57d6e4262e35d761fc0dacfff45c396278e289e5b7c2a347b7a8",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "메모를 찾을 수 없습니다",
+          "expected": true,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "second restart label deletion remains",
+      "evidence": "ev_e0ba7b901c3bd164e8695699af1a3e6fb49e9c3fbd21ada765402968a08bebbe",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": [
+        {
+          "text": "REA-QA-1111 검증",
+          "expected": true,
+          "passed": true
+        },
+        {
+          "text": "REA-QA-1111 삭제검증",
+          "expected": false,
+          "passed": true
+        }
+      ]
+    },
+    {
+      "name": "leave demonstration page",
+      "evidence": "ev_316a613e4e8c5f25de562de404224feb48d28c5143babcde2d24845286e05ef7",
+      "actions": [
+        {
+          "action": "goto_start",
+          "status": "completed",
+          "error": null
+        },
+        {
+          "action": "wait_for_timeout",
+          "status": "completed",
+          "error": null
+        }
+      ],
+      "checks": []
+    }
+  ]
+}

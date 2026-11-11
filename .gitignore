@@ -97,3 +97,18 @@ typescript
 !/evidence/keep-archive-list/README.ko.md
 !/evidence/keep-archive-list/observation.sanitized.json
 !/evidence/keep-archive-list/SHA256SUMS.txt
+
+# 검색·휴지통 정제 관찰
+!/evidence/keep-search-trash/
+!/evidence/keep-search-trash/README.ko.md
+!/evidence/keep-search-trash/observation.sanitized.json
+!/evidence/keep-search-trash/SHA256SUMS.txt
+
+# 테스트 데이터만 표시한 실제 앱 검증 증거 (개인정보 검수 완료)
+!/evidence/app-verification/
+!/evidence/app-verification/README.ko.md
+!/evidence/app-verification/observations.sanitized.json
+!/evidence/app-verification/SHA256SUMS.txt
+!/evidence/app-verification/01-cards.png
+!/evidence/app-verification/02-delete-confirm.png
+!/evidence/app-verification/03-editor-settings.png

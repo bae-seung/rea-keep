@@ -11,9 +11,16 @@ class ArchiveMigrationTest {
    sql.execute("CREATE TABLE rea_app_notes (id BIGINT PRIMARY KEY,title VARCHAR(200),body TEXT,created_at DATETIME(6),updated_at DATETIME(6))");
    sql.execute("INSERT INTO rea_app_notes VALUES (1,'기존 제목','기존 본문','2026-01-01 01:02:03','2026-02-02 04:05:06')");
    sql.execute(Files.readString(Path.of("db/002-add-archived.sql")));
+   sql.execute(Files.readString(Path.of("db/003-add-trashed.sql")));
+   sql.execute("UPDATE rea_app_notes SET archived=1");
+   DatabaseSetup.apply(connection,Path.of("db"));
+   DatabaseSetup.apply(connection,Path.of("db"));
    try (var rows=sql.executeQuery("SELECT * FROM rea_app_notes")) {
     assertThat(rows.next()).isTrue();
-    assertThat(rows.getBoolean("archived")).isFalse();
+    assertThat(rows.getBoolean("archived")).isTrue();
+    assertThat(rows.getBoolean("trashed")).isFalse();
+    assertThat(rows.getBoolean("pinned")).isFalse();
+    assertThat(rows.getString("color")).isEqualTo("DEFAULT");
     assertThat(rows.getString("title")).isEqualTo("기존 제목");
     assertThat(rows.getString("body")).isEqualTo("기존 본문");
     assertThat(rows.getTimestamp("created_at").toLocalDateTime()).hasToString("2026-01-01T01:02:03");

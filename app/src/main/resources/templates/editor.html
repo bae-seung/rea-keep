@@ -4,6 +4,14 @@
 <p class="error" role="alert" th:if="${saveError}" th:text="${saveError}"></p>
 <label for="title">제목</label><input id="title" th:field="*{title}" maxlength="200" placeholder="제목을 입력하세요" autofocus>
 <label for="body">본문</label><textarea id="body" th:field="*{body}" maxlength="10000" rows="12" placeholder="메모를 작성하세요"></textarea>
+<label for="checklistText">체크리스트</label><textarea id="checklistText" th:field="*{checklistText}" rows="5" maxlength="21000" placeholder="한 줄에 한 항목. 완료한 항목은 [x] 로 시작하세요."></textarea>
+<p class="hint">항목당 200자, 최대 100개. 항목 추가·삭제는 줄을 추가하거나 지운 뒤 저장하세요.</p>
+<label for="labelIds">라벨 선택 (여러 개 선택 가능)</label><select id="labelIds" th:field="*{labelIds}" multiple><option th:each="label : ${availableLabels}" th:value="${label.id}" th:text="${label.name}"></option></select><a href="/labels">라벨 관리</a>
 <p class="hint">제목 200자 · 본문 10,000자 이내. 저장 버튼을 눌러야 반영됩니다.</p>
 <div class="actions"><a href="/">취소하고 목록으로</a><button type="submit">저장</button></div><p class="hint" id="save-state" aria-live="polite"></p>
-</form></section></main></body></html>
+</form>
+<div th:if="${note != null}"><h2>빠른 설정</h2>
+<form method="post" th:action="@{/notes/{id}/pin(id=${note.id})}"><input type="hidden" name="pinned" th:value="${!note.pinned}"><button type="submit" th:text="${note.pinned ? '고정 해제' : '고정'}"></button></form>
+<form method="post" th:action="@{/notes/{id}/color(id=${note.id})}"><label for="color">메모 색상</label><select id="color" name="color"><option th:each="c : ${ {'DEFAULT','YELLOW','GREEN','BLUE','PINK'} }" th:value="${c}" th:selected="${c == note.color}" th:text="${c}"></option></select><button type="submit">색상 변경</button></form>
+<h3 th:if="${!note.items.isEmpty()}">체크리스트 완료 상태</h3><form th:each="item,stat : ${note.items}" method="post" th:action="@{/notes/{id}/check(id=${note.id})}"><input type="hidden" name="index" th:value="${stat.index}"><input type="hidden" name="done" th:value="${!item.done}"><button type="submit" th:text="${(item.done ? '☑ ' : '☐ ') + item.text}"></button></form>
+<p class="hint">빠른 설정 전 편집 내용을 먼저 저장하세요.</p></div></section></main></body></html>

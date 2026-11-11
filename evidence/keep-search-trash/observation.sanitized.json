@@ -1,0 +1,49 @@
+{
+  "record_type": "sanitized excerpts, not full Evidence",
+  "date": "2026-11-10",
+  "connection": {
+    "evidence_id": "ev_086532518c79e06c66c912c5e545fc0cd1a7aadaba82f5a0e43f7825ee0fcde2",
+    "operation": "list_browser_targets",
+    "endpoint": "http://127.0.0.1:9226",
+    "result": "connected"
+  },
+  "inspection": {
+    "evidence_id": "ev_5f8d1b3a26cf0a895f6ba9e70e3c98cd79491ddacd2ba06273fcd0d92b8eb814",
+    "operation": "inspect_web_page",
+    "observation_ms": 0,
+    "capture_window": {
+      "started_at": "2026-11-10T07:30:36.156Z",
+      "ended_at": "2026-11-10T07:30:36.267Z",
+      "observation_ms": 0
+    },
+    "selected_nodes": [
+      {
+        "role": "StaticText",
+        "name": "지금은 연결할 수 없습니다. 나중에 다시 시도해 주세요."
+      },
+      {
+        "role": "StaticText",
+        "name": "REA 과제 테스트"
+      },
+      {
+        "role": "StaticText",
+        "name": "보관 및 보관 해제 동작 확인"
+      }
+    ]
+  },
+  "actions": [],
+  "unverified": [
+    "title search",
+    "body search",
+    "archived note search inclusion",
+    "trashed note search exclusion",
+    "move to trash and restore",
+    "restore destination of archived note",
+    "permanent deletion confirmation"
+  ],
+  "privacy": "No private note opened/modified; no raw DOM, account metadata, note URL, screenshots or credentials saved. No permanent deletion performed.",
+  "limitations": [
+    "CDP connected but application reports unable to connect. No retries or mutations attempted.",
+    "Archive control appeared focusable this time; do not reuse previous disabled-state claim."
+  ]
+}
